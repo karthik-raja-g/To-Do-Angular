@@ -4,14 +4,57 @@ $font: 'Roboto', sans-serif;
     position: fixed;
     background-color: #F4F4F4;
     height: 50em;
-    width: 2.8rem;
+    width: 3em;
     transition: 0.3s;
     top: 3em;
-    left: 0em;
+    margin: 0em;
+
+    a {
+        display:none;
+    }
+
+    p {
+        display: none;
+    }
+
+    .category {
+        display:none;
+    }
+
+    .addCate {
+        display:none;
+    }
+
+    .sideMenu {
+        display: none;
+    }
+
   }
   
-.menuOpen {
-    width: 18.2rem;
+.menuClosed {
+    width: 18em;
+  
+    a {
+        display:block;
+    }
+
+
+    p {
+        display: block;
+    }
+
+    .category {
+        display:block;
+    }
+
+    .addCate {
+        display:block;
+    }
+
+    .sideMenu {
+        display: block;
+    }
+    
   }
 
 .menu {
@@ -70,7 +113,7 @@ $font: 'Roboto', sans-serif;
         left: 1em;
         width: 1.2em ;
         height: 1.2em;
-        background: url("menu.svg");
+        background: url("img/menu.svg");
         top: 2.5em;
         outline: none;
     }
@@ -87,19 +130,6 @@ $font: 'Roboto', sans-serif;
 .menu {
     .menuOptions { 
         .sideMenu {
-            .sideMenuIcons {
-                position: relative;
-                height: 1.6em;
-                width: 1.6em;
-                display: inline-block;
-                top: 0.3em;
-                left: 0.5em;
-                cursor: pointer;
-            }
-              
-            .sideMenuIcons:hover {
-                background-color: #d9d9d9;
-            }
   
             #sun {
                 background: url("img/sun.png");
@@ -123,11 +153,25 @@ $font: 'Roboto', sans-serif;
     }
 }
 
+.sideMenuIcons {
+    position: relative;
+    height: 1.6em;
+    width: 1.6em;
+    display: inline-block;
+    top: 0.3em;
+    left: 0.5em;
+    cursor: pointer;
+}
+  
+.sideMenuIcons:hover {
+    background-color: #d9d9d9;
+}
+
 .menu {
     .menuOptions {    
         .category {
             position: relative;
-            top: 0em;
+            top: 2em;
             height: fit-content;
             width: 18em;
             right: 0.3em;
@@ -147,6 +191,11 @@ $font: 'Roboto', sans-serif;
             display: block;
             margin: 0.3em;
             cursor: pointer;
+            right: -1em;
+
+            #list {
+                background: url("img/list.png");
+            }
         }
         
         .categoryName:hover {
@@ -164,32 +213,36 @@ $font: 'Roboto', sans-serif;
 }
 
 .menu {
-    .addCate {
-        position: relative;
-        top: 1.5em;
-        left: 0em;
+    .menuOptions {
+        .addCate {
+            position: relative;
+            top: 2.5em;
+            left: 0em;
+        }
     }
 }
   
 .menu {
-    .addCate {
-        #addList {
-            background: url("img/addList.png");
-        }
+    .menuOptions {
+        .addCate {
+            #addList {
+                background: url("img/addList.png");
+            }
 
-        .newList {
-            position: relative;
-            left: 2em;
-            height: 1.5em;
-            top: 0em;
-            width: 10em;
-            font-size: 118%;
-            border: none;
-            visibility: visible;
-        }
+            .newList {
+                position: relative;
+                left: 2em;
+                height: 1.5em;
+                top: 0em;
+                width: 10em;
+                font-size: 118%;
+                border: none;
+                visibility: visible;
+            }
 
-        newListHidden{
-            visibility: hidden;
+            newListHidden {
+                visibility: hidden;
+            }
         }
     }
 }

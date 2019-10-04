@@ -1,5 +1,15 @@
 <div class="tasks">
-    <h1 class= "subTaskHeader"></h1>
-    <div class="subTaskDetails"></div>
-    <div class="taskDetails"></div>
+    <h1 class= "subTaskHeader">
+        <i class="contextIcon"></i>
+        <div class="categoryDeletion"></div>
+        <p>{{taskName}}</p>
+    </h1>
+    <div class="subTaskDetails">
+        <div class = "subTask" id= {{subTask.id}} (click) = addSteps($event) *ngFor = "let subTask of subTasks">
+            <i class="selectIcon" id="unCheckedIcon"></i>
+            <p>{{subTask.name}}</p>
+        </div>
+    </div>
+    <div class="taskDetails">
+    </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="menu" [ngClass] = "isToggled? 'menu menuOpen':'menu'">
+<div class="menu" >
     <button (click) = "toggle($event)" class="menuButton" id="sideNav" value="open"></button><br><br>
     <div class= "menuOptions" id="options">
         <div class="sideMenu">
@@ -22,13 +22,14 @@
             <a href="#"> My List</a>
         </div>
         <div class="category">
-            <li *ngFor="let task of tasks">
-                <span {{task.name}}></span>
-            </li>
+            <div class = "categoryName" id= {{task.id}} (click) = addTasks($event) *ngFor = "let task of tasks">
+                <i class="sideMenuIcons" id="list" display="inline"></i>
+                <p>{{task.name}}</p>              
+            </div>
         </div>
         <div class="addCate" id="addCategory">
             <i class="sideMenuIcons" id="addList"></i>
-            <input [(ngModel)]="taskName" (keypress) = "addTask($event)"class= "newList" type="text" value="" placeholder= "New List">
+            <input [(ngModel)]="taskName" (keypress) = "addCategory($event)"class= "newList" type="text" value="" placeholder= "New List">
         </div>
     </div>
 </div>

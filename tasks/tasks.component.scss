@@ -2,7 +2,7 @@
     background-color: #FFFFFF;
     position: relative;
     height: 50em;
-    left: 19em;
+    left: 3em;
     width: 100em;
     border-left-style: solid;
     border-right-style: solid;
@@ -10,7 +10,7 @@
     border-width: 1px;
     transition: 0.3s;
     display: flex;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     top: 2.5em;
 
     h1 {
@@ -49,6 +49,18 @@
     .subTaskHeader {
         color: #117AD3;
         font-family: 'Roboto', sans-serif;
+
+        .contextIcon {
+            background: url(img/options.png);
+            position: relative;
+            top: 0em;
+            right: -1em;
+            height: 0.55em;
+            display: inline-block;
+            width: 0.55em;
+            cursor: pointer;
+            
+        }
  
         .categoryDeletion {
             position: relative;
@@ -72,16 +84,6 @@
             top: 0.5em;
             right: -1em;
             font-weight: normal;
-        }
-        .contextIcon {
-            background: url(/img/options.png);
-            position: relative;
-            top: 0em;
-            right: -1em;
-            height: 0.55em;
-            display: inline-block;
-            width: 0.55em;
-            cursor: pointer;;
         }
     }
     .subTaskDetails {
@@ -119,11 +121,11 @@
                 left: 0.5em;
             }
             #unCheckedIcon {
-                background-image: url("/img/uncheck.png");
+                background-image: url("img/uncheck.png");
             }
               
             #checkedIcon {
-                background-image: url("/img/check.png");
+                background-image: url("img/check.png");
             }
 
             p {
@@ -148,17 +150,9 @@
         border-color:  #d9d9d9;
         border-width: 1px;
         visibility: hidden; 
-
-        .subTaskAddition {
-            position: relative;
-            left: 19em;
-            top: 4.5em;
-            width: 5em;
-            height: 3em;
-            cursor: pointer;
-            font-family: 'Roboto', sans-serif;
-            display: block;
-
+    
+    
+    
             .taskAddition {
                 position: relative;
                 top: -2.4em;
@@ -167,14 +161,24 @@
                 outline: none;
                 display: inline-block;
             }
-        }
     }
+}
 
     .showTaskDetails {
         visibility: visible;
       }
-}
+
   
+  .subTaskAddition {
+    position: relative;
+    left: 19em;
+    top: 4.5em;
+    width: 5em;
+    height: 3em;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    display: block;
+  }
   .taskAdder {
     position: relative;
     height: 1.5em;
@@ -190,8 +194,6 @@
     position: relative;
     top: -1.6em;
   }
-  
-
   
   .displaySubTasks {
     display: block;
