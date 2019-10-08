@@ -11,7 +11,6 @@ import {Task} from "src/app/Task";
 })
 
 export class CategoryService {
-  //tasks = Tasks
   constructor() { }
 
   public addTask(task) {
@@ -20,7 +19,7 @@ export class CategoryService {
     newTask.name = task;
     newTask.isAvailable = true;
     newTask.isDeleted = false; 
-    //this.tasks.push(newTask);
+    newTask.subtasks = [];
     return newTask;
   }
 

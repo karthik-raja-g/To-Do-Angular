@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryComponent } from '../category/category.component';
 import {Task} from 'src/app/Task';
 import {Utils} from 'src/app/utils/utils';
 import { DataService } from "../data.service";
+import { SubTask } from '../SubTask';
+import {StepsComponent} from "src/app/steps/steps.component";
 
 
 @Component({
@@ -14,39 +15,61 @@ export class TasksComponent implements OnInit {
 
   constructor(private data: DataService) { }
 
-  commonUtils = new Utils;
-  currentTask = Task;
-  taskName : string;
+  currentTask : Task;
+  currentSubTask : SubTask; 
+  subTask : SubTask;
+  displaySubTasks: SubTask[];
+  stepsComponent = new StepsComponent(this.data);
 
   ngOnInit() {
-    this.data.activeTask.subscribe(currentTask => this.currentTask = this.currentTask)
+    this.data.currentTask.subscribe(activeTask => this.currentTask = activeTask);
+    this.data.currentSubTask.subscribe(activeSubTask => this.currentSubTask = activeSubTask);
+    this.data.getUpdate();
   }
 
-  public addTask(e,tasks:Task[]) {
-    console.log(tasks);
-    let index = e.target.id;
-    let totalTasks;
-    let completedTasks;
-    let taskInfo = document.querySelector(".taskDetails");
-    let tasksBody = document.querySelector(".tasks");
-    let header = document.querySelector(".subTaskHeader");
-    console.log(tasksBody.lastChild+"!!!!!");
-    this.commonUtils.clearContent(taskInfo);
-    this.commonUtils.clearContent(tasksBody.lastChild);
-    this.commonUtils.clearContent(document.querySelector(".subTaskDetails"));
-    this.commonUtils.mapAttributes(taskInfo,[["class", "taskDetails showTaskDetails"]]);
-    console.log(index+"????")
-    let task = tasks.find(({id}) => id == index);
-    this.taskName = task.name;
-    console.log(this.taskName+"VVVVVVVVV");
-    //totalTasks = tasks[index].subtasks.length;
-    //completedTasks = getCompletedTasks(index);
-    //this.commonUtils.addInnerHTML(para,`${completedTasks} of ${totalTasks} tasks completed`);
-    //$(para).html(`${completedTasks} of ${totalTasks} tasks completed`);
+  /**
+   * It shows the task addition option when clicked on the category
+   * @param task - The task selected by the user
+   */
+  public addSubTask(task:Task) {
+    this.currentTask = task;
   }
 
-  public displaySubTasks(id) {
+  /**
+   * It saves the sub task inside the selected main task
+   * @param e - The element containig sub task name entered by user
+   */
+  public saveSubTask(e) {
+    this.displaySubTasks = this.currentTask.subtasks;
+    if(e.keyCode == 13 && e.target.value != "") {
+      this.subTask = {id: Date.now(), info: e.target.value, isAvailable: true, isDeleted: false, steps: [],notes: ""};
+      e.target.value = "";
+      this.currentTask.subtasks.push(this.subTask);
+      this.data.updateTask(this.currentTask);
+      this.data.updateSubTask(this.currentSubTask);
+      this.data.setUpdate(this.currentTask);
+      
+    }
+  }
 
+  /**
+   * It changes the status of sub task on clicking. A completed task will have a strike mark
+   * @param sub - The subtask whoose status has to be changed
+   */
+  public changeSubTaskStatus(sub:SubTask) {
+    let subTask = this.currentTask.subtasks.find(({id}) => id == sub.id);
+    if(subTask.isAvailable) 
+      subTask.isAvailable = false;
+    else
+      subTask.isAvailable = true;
+  }
+
+  /**
+   * It adds steps to a selected sub task
+   * @param subTask - The sub task to which steps are to be added 
+   */
+  public showStepsMenu(subTask:SubTask) {
+    this.stepsComponent.showStepsMenu(subTask);
   }
 
 }
