@@ -46,15 +46,18 @@
 }
   
 .tasks {
-    .subTaskHeader {
+    .taskHeading {
         color: #117AD3;
         font-family: 'Roboto', sans-serif;
+        border-style: none;
+        font-size: 120%;
+        outline: none;
 
         .contextIcon {
-            background: url(img/options.png);
+            background: url("img/options.png");
             position: relative;
-            top: 0em;
-            right: -1em;
+            top: -2em;
+            right: -2em;
             height: 0.55em;
             display: inline-block;
             width: 0.55em;
@@ -86,92 +89,67 @@
             font-weight: normal;
         }
     }
-    .subTaskDetails {
-        position: relative;
-        padding: 1em 1em 1em 4em;
-        font-family: 'Roboto', sans-serif;
-        left: -2em;
-        overflow-y: auto;
-        overflow-x: hidden;
-        width: 52em;
-        top: 5em;
-        
-        p {
-            cursor: pointer;
-        }
+}
 
-        .subTask {
-            position: relative;
-            width: 70em;
-            height: 4em;
-            right: -4em;
-            top: -1em;
-            border-bottom-style: solid;
-            border-width: 1px;
-            font-family: 'Roboto', sans-serif;
-            align-content: center;
-            border-color:  #d9d9d9;
-
-            .selectIcon {
-                height: 2.5em;
-                width: 2.5em;
-                display: inline-block;
-                position: relative; 
-                top: 1.2em;
-                left: 0.5em;
-            }
-            #unCheckedIcon {
-                background-image: url("img/uncheck.png");
-            }
-              
-            #checkedIcon {
-                background-image: url("img/check.png");
-            }
-
-            p {
-                position: relative;
-                top: -1.5em;
-                left: 4em;
-                font-size: 125%;
-            }
-        }
-    }
-    .taskDetails {
-        /*position: sticky;
-        position: -webkit-sticky;*/
-        position: relative;
-        left: 6em;
-        bottom: -5em;
-        width: 49em;
-        font-family: 'Roboto', sans-serif;
-        border: none;
-        height: 3em;
-        border-bottom-style: solid;
-        border-color:  #d9d9d9;
-        border-width: 1px;
-        visibility: hidden; 
+.subTaskDetails {
+    position: relative;
+    padding: 1em 1em 1em 4em;
+    font-family: 'Roboto', sans-serif;
+    left: -2em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 52em;
+    top: 5em;
+    height: fit-content;
     
-    
-    
-            .taskAddition {
-                position: relative;
-                top: -2.4em;
-                border: none;
-                width: 45em;
-                outline: none;
-                display: inline-block;
-            }
+    p {
+        cursor: pointer;
     }
 }
 
-    .showTaskDetails {
-        visibility: visible;
-      }
+
+.subTask {
+    position: relative;
+    width: 70em;
+    height: 4em;
+    right: -4em;
+    top: -1em;
+    border-bottom-style: solid;
+    border-width: 1px;
+    font-family: 'Roboto', sans-serif;
+    align-content: center;
+    border-color:  #d9d9d9;
+    display:block;
+
+    .selectIcon {
+        height: 2.5em;
+        width: 2.5em;
+        display: block;
+        position: relative; 
+        top: 1.2em;
+        left: 0.5em;
+    }
+    #unCheckedIcon {
+        background-image: url("img/uncheck.png");
+    }
+      
+    #checkedIcon {
+        background-image: url("img/check.png");
+    }
+
+    p {
+        position: relative;
+        top: -1.5em;
+        left: 4em;
+        font-size: 125%;
+    }
+}
+
 
   
   .subTaskAddition {
     position: relative;
-    left: 19em;
+    left: 14em;
     top: 4.5em;
     width: 5em;
     height: 3em;
@@ -188,12 +166,6 @@
     top: -1.5em;
   }
   
-  .taskDetails input {
-    font-size: 100%;
-    outline: none;
-    position: relative;
-    top: -1.6em;
-  }
   
   .displaySubTasks {
     display: block;
@@ -211,7 +183,7 @@
   
   
   #addSub {
-    background: url("/img/addList.png");
+    background: url("img/addList.png");
     background-repeat: no-repeat;
     display: block;
     height: 0.5em;
@@ -220,3 +192,36 @@
     top: 4em;
     cursor: pointer;
   }
+
+  #addList {
+    background: url("img/addList.png");
+  }
+
+  .taskDetails {
+    position: relative;
+    left: -42em;
+    bottom: -23em;
+    width: 51em;
+    font-family: "Roboto", sans-serif;
+    border: none;
+    height: 8em;
+  }
+   
+
+.taskAddition {
+    position: relative;
+    top: -9.4em;
+    border: none;
+    width: 45em;
+    outline: none;
+    display: inline-block;
+    left: -14em;
+    border-bottom-style: solid;
+    border-color: #d9d9d9;
+    border-width: 1px;
+}
+
+.showTaskDetails {
+    display: block;
+  }
+  

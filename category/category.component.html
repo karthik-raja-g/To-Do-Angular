@@ -21,15 +21,15 @@
             <i class="sideMenuIcons" id="list"></i>
             <a href="#"> My List</a>
         </div>
-        <div class="category">
-            <div class = "categoryName" id= {{task.id}} (click) = addTasks($event) *ngFor = "let task of tasks">
+        <div class="category" *ngFor = "let task of displayTasks">
+            <div class = "categoryName" id= {{task.id}} (click) = addSubTask(task)>
                 <i class="sideMenuIcons" id="list" display="inline"></i>
                 <p>{{task.name}}</p>              
             </div>
         </div>
         <div class="addCate" id="addCategory">
             <i class="sideMenuIcons" id="addList"></i>
-            <input [(ngModel)]="taskName" (keypress) = "addCategory($event)"class= "newList" type="text" value="" placeholder= "New List">
+            <input [(ngModel)]="taskName" (keypress) = "addCategory($event)" class= "newList" type="text" value="" placeholder= "New List">
         </div>
     </div>
 </div>
