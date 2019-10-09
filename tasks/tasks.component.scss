@@ -1,4 +1,5 @@
 $font: 'Roboto', sans-serif;
+$borderStyle: solid;
 
 .tasks {
     background-color: #FFFFFF;
@@ -6,8 +7,8 @@ $font: 'Roboto', sans-serif;
     height: 50em;
     left: 3em;
     width: 100em;
-    border-left-style: solid;
-    border-right-style: solid;
+    border-left-style: $borderStyle;
+    border-right-style: $borderStyle;
     border-color: black;
     border-width: 1px;
     transition: 0.3s;
@@ -44,41 +45,41 @@ $font: 'Roboto', sans-serif;
         border-style: none;
         font-size: 120%;
         outline: none;
+    }
 
-        .contextIcon {
-            background: url("img/options.png");
-            position: relative;
-            top: -2em;
-            right: -2em;
-            height: 0.55em;
-            display: inline-block;
-            width: 0.55em;
-            cursor: pointer;       
-        }
+    .contextIcon {
+        background: url("img/options.png");
+        position: relative;
+        top: 0.2em;
+        right: 11em;
+        height: 0.55em;
+        display: inline-block;
+        width: 0.55em;
+        cursor: pointer;       
+    }
  
-        .categoryDeletion {
-            position: relative;
-            top: -3.5em;
-            cursor: pointer;
-            font-family: $font;
-            height: 2em;
-            width: 5em;
-            font-size: 35%;
-            right: -15em;
-            background-color: #f2f2f2;
-            align-content: center;
-            display: none;
-        }
-        .categoryDeletionVisible {
-            display: block;
-        }
+    .categoryDeletion {
+        position: relative;
+        top: -3.5em;
+        cursor: pointer;
+        font-family: $font;
+        height: 2em;
+        width: 5em;
+        font-size: 35%;
+        right: -15em;
+        background-color: #f2f2f2;
+        align-content: center;
+        display: none;
+    }
+    .categoryDeletionVisible {
+        display: block;
+    }
 
-        .categoryDeletion p {
-            position: relative;
-            top: 0.5em;
-            right: -1em;
-            font-weight: normal;
-        }
+    .categoryDeletion p {
+        position: relative;
+        top: 0.5em;
+        right: -1em;
+        font-weight: normal;
     }
 }
 
@@ -108,7 +109,7 @@ $font: 'Roboto', sans-serif;
             height: 4em;
             right: -4em;
             top: -1em;
-            border-bottom-style: solid;
+            border-bottom-style: $borderStyle;
             border-width: 1px;
             font-family: $font;
             align-content: center;
@@ -170,7 +171,7 @@ $font: 'Roboto', sans-serif;
             outline: none;
             display: block;
             left: 3em;
-            border-bottom-style: solid;
+            border-bottom-style: $borderStyle;
             border-color: #d9d9d9;
             border-width: 1px;
         }

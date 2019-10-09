@@ -14,8 +14,9 @@ import { DataService } from "../data.service";
 export class CategoryComponent implements OnInit {
 
   tasks: AllTasks = {allTasks: []};
-  categoryService = new CategoryService;
   currentTask:Task;
+  stats:number;
+  categoryService = new CategoryService;
   tasksComponent = new TasksComponent(this.data);
   commonUtils = new Utils;
   
@@ -35,6 +36,7 @@ export class CategoryComponent implements OnInit {
       this.tasks.allTasks.push(this.currentTask);
       this.data.updateTask(this.currentTask);
       e.target.value ="";
+      this.stats = this.tasks.allTasks.filter((task:Task) => task.isDeleted === false).length;
     }
 
   }
@@ -65,5 +67,6 @@ export class CategoryComponent implements OnInit {
   public addSubTask(task: Task) {
     this.data.updateTask(task);
     this.tasksComponent.addSubTask(task);
+    this.stats = this.tasks.allTasks.filter((task:Task) => task.isDeleted === false).length;
   }
 }

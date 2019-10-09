@@ -153,20 +153,6 @@ $font: 'Roboto', sans-serif;
     }
 }
 
-.sideMenuIcons {
-    position: relative;
-    height: 1.6em;
-    width: 1.6em;
-    display: inline-block;
-    top: 0.3em;
-    left: 0.5em;
-    cursor: pointer;
-}
-  
-.sideMenuIcons:hover {
-    background-color: #d9d9d9;
-}
-
 .menu {
     .menuOptions {    
         .category {
@@ -245,6 +231,20 @@ $font: 'Roboto', sans-serif;
             }
         }
     }
+}
+
+.sideMenuIcons {
+    position: relative;
+    height: 1.6em;
+    width: 1.6em;
+    display: inline-block;
+    top: 0.3em;
+    left: 0.5em;
+    cursor: pointer;
+}
+  
+.sideMenuIcons:hover {
+    background-color: #d9d9d9;
 }
   
 

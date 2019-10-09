@@ -1,8 +1,10 @@
-<div class="tasks tasksClosed" *ngIf = "currentTask != null">
+<div class="tasks" *ngIf = "currentTask != null">
     <h1 class= "subTaskHeader" *ngIf = "currentTask">       
         <input class="taskHeading" [(ngModel)] = "currentTask.name"/>
         <i class="contextIcon"></i>
-        <div class="categoryDeletion"></div>
+        <div class="categoryDeletion">
+            <p (click) = "deleteCurrentCategory()">Delete</p>
+        </div>
         <p id="stats">{{stats}}</p>
     </h1>
     <div class="subTaskDetails">

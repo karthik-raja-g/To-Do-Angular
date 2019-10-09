@@ -22,7 +22,7 @@
             <a href="#"> My List</a>
         </div>
         <div class="category" *ngFor = "let task of tasks.allTasks">
-            <div class = "categoryName" id= {{task.id}} (click) = addSubTask(task)>
+            <div class = "categoryName" id= {{task.id}} (click) = addSubTask(task) *ngIf = "!task.isDeleted">
                 <i class="sideMenuIcons" id="list" display="inline"></i>
                 <p>{{task.name}}</p>              
             </div>
@@ -31,6 +31,7 @@
             <i class="sideMenuIcons" id="addList"></i>
             <input [(ngModel)]="taskName" (keypress) = "addCategory($event)" class= "newList" type="text" value="" placeholder= "New List">
         </div>
+        <p class="totalCategories">{{stats}}</p>
     </div>
 </div>
 

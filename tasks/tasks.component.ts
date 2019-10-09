@@ -81,4 +81,8 @@ export class TasksComponent implements OnInit {
     return count;
   }
 
+  public deleteCurrentCategory() {
+    this.currentTask.isDeleted = true;
+  }
+
 }
