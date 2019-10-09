@@ -1,37 +1,20 @@
-#addSub {
-    background: url("img/addList.png");
-    background-repeat: no-repeat;
-    display: block;
-    height: 0.5em;
-    width: 1.8em;
-    left: 3em;
-    top: 4em;
-    cursor: pointer;
-  }
+$font: 'Roboto', sans-serif;
+ 
+.stepDetails {
+  position: absolute;
+  background-color: #F4F4F4;
+  height: 50em;
+  left: 72em;
+  width: 50em;
+  top: 3em;
+  border-left-style: solid;
+  border-width: 1px;
+  overflow-y: auto;
+  border-color: grey;
+  transition: 0.3s;
+}
   
-  .stepDetails {
-    position: absolute;
-    background-color: #F4F4F4;
-    height: 50em;
-    left: 72em;
-    width: 50em;
-    top: 3em;
-    border-left-style: solid;
-    border-width: 1px;
-    overflow-y: auto;
-    border-color: grey;
-    transition: 0.3s;
-  }
-  
-  .stepDetailsOpen {
-    left: 100em;
-  }
-  
-  .stepDetailsClosed {
-    width: 40em;
-    left: 73em;
-  }
-  
+.stepDetails { 
   .taskSteps {
     position: absolute;
     height: 17em;
@@ -43,31 +26,120 @@
     border-color: grey;
     border-width: 1px;
   }
+}
 
-  .showTaskSteps {
-    display:block;
+.stepDetails { 
+  .taskSteps {
+    .stepHeader {
+      font-family: $font;
+      position: absolute;
+      left: 1.5em;
+      white-space: normal;
+      width: 17em;
+      font-size: 120%;
+      top: 1em;
+
+      #stepHeading {
+        position: absolute;
+        top: -0.8em;
+        right: 20em;
+        width: 4em;
+        border: none;
+        outline: none; 
+        font-family: $font;
+      }
+      
+      #stepStats {
+        position: relative;
+        font-size: 50%;
+        width: 13em;
+        right: 0em;
+        top: 0.8em;
+      }
+
+      #taskCheckBox {
+        position: absolute;
+        top: -0.8em;
+        right: 24.8em;
+      }
+    }
   }
-   
-  
- #stepStats {
-    position: relative;
-    font-size: 50%;
-    width: 13em;
-    right: 0em;
-    top: 0.8em;
+}
+
+.stepDetails { 
+  .taskSteps {
+    .stepInputDiv {
+      .stepInput {
+        position: relative;
+        width: 15em;
+        bottom: -3em;
+        height: 2em;
+        right: -1.5em;
+        border-bottom-style: solid;
+        border-color: grey;
+        border-width: 1px;
+
+        .inputStep {
+          border: none;
+          outline: none;
+          position: relative;
+          top: 0.9em;
+          width: 4em;
+          right: -1em;
+        }
+      }
+    }
   }
-  
-.newTaskHeading {
-    position: relative;
-    top: -1.4em;
-    right: 0em;
-    font-size: 100%;
-    border-bottom-style: solid;
-    border-width: 1px;
-    outline: none;
+}
+
+.stepDetails { 
+  .taskSteps {
+    .steps {
+      position: absolute;
+      top: 7em;
+      height: 9.5em;
+      overflow-y: auto;
+      width: 20em;
+      right: 0.1em;
+
+      .subStep {
+        position: relative;
+        width: 17em;
+        height: 3em;
+        right: -0.8em;
+        top: -1em;
+        border-bottom-style: solid;
+        border-width: 1px;
+        font-family: $font;
+        align-content: center;
+        border-color: grey;
+        cursor: pointer;
+
+        .stepDetail {
+          position: relative;
+          top: 1.9em;
+          width: 10em;
+          border-style: none;
+          outline: none;
+        }
+
+        .stepDeletion {
+          position: relative;
+          display: block;
+          width: 1em;
+          height: 1em;
+          bottom: 0.4em;
+          right: -16em;
+          background: url("img/close.png");
+          cursor: pointer;
+        }
+      }
+    }
   }
-  
- .scheduler {
+}
+
+.stepDetails { 
+  .scheduler {
     position: relative;
     width: 21em;
     top: 19em;
@@ -79,7 +151,7 @@
     border-width: 1px;
   }
   
- .reminder {
+  .reminder {
     position: relative;
     width: 21em;
     top: 19.5em;
@@ -90,7 +162,8 @@
     border-color: grey;
     border-width: 1px; 
   }
- .taskNotes {
+
+  .taskNotes {
     position: relative;
     width: 21em;
     top: 20em;
@@ -99,98 +172,19 @@
     background-color: white;
     border-style: solid;
     border-color: grey;
-    border-width: 1px; 
-  }
-  
-  .stepInput {
-    position: relative;
-    width: 15em;
-    bottom: -3em;
-    height: 2em;
-    right: -1.5em;
-    border-bottom-style: solid;
-    border-color: grey;
     border-width: 1px;
-  
-  }
-  
-  .inputStep {
-    border: none;
-    outline: none;
-    position: relative;
-    top: 0.9em;
-    width: 4em;
-    right: -1em;
-  }
-  
-  .subStep {
-    position: relative;
-    width: 17em;
-    height: 3em;
-    right: -0.8em;
-    top: -1em;
-    border-bottom-style: solid;
-    border-width: 1px;
-    font-family: 'Roboto', sans-serif;
-    align-content: center;
-    border-color: grey;
-    cursor: pointer;
-  }
-  
-  .subStep .stepDetail {
-    position: relative;
-    top: 1.9em;
-    width: 10em;
-    border-style: none;
-    outline: none;
-  }
-  
-  #taskCheckBox {
-    position: absolute;
-    top: -0.8em;
-    right: 24.8em;
-  }
-  
-  .steps {
-    position: absolute;
-    top: 7em;
-    height: 9.5em;
-    overflow-y: auto;
-    width: 20em;
-    right: 0.1em;
-  }
-  
-.stepDeletion {
-    position: relative;
-    display: block;
-    width: 1em;
-    height: 1em;
-    bottom: 0.4em;
-    right: -16em;
-    background: url("img/close.png");
-    cursor: pointer;
-  }
-  .stepInput {
-    position: relative;
-    width: 15em;
-    bottom: -3em;
-    height: 2em;
-    right: -1.5em;
-    border-bottom-style: solid;
-    border-color: grey;
-    border-width: 1px;
+    
+    .notes {
+      position: relative;
+      width: 24.9em;
+      left: 0em;
+      height: 8em;
+      border: none;
+      top: 0.1em;
+    }
   }
 
-  .taskNotes textarea {
-    position: relative;
-    width: 24.9em;
-    left: 0em;
-    height: 8em;
-    border: none;
-    top: 0.1em;
-  }
-  
- .slider {
+  .slider {
     position: relative;
     display: block;
     width: 1em;
@@ -201,7 +195,7 @@
     cursor: pointer;
   }
   
-.trash {
+  .trash {
     position: relative;
     display: block;
     width: 1em;
@@ -211,37 +205,5 @@
     background: url("img/garbage.svg");
     cursor: pointer;
   }
-
-  .stepHeader {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    left: 1.5em;
-    white-space: normal;
-    width: 17em;
-    font-size: 120%;
-    top: 1em;
-  }
-  
-  .stepHeader #stepHeading {
-    position: absolute;
-    top: -0.8em;
-    right: 20em;
-    width: 4em;
-    border: none;
-    outline: none; 
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .stepHeader #stepStats {
-    position: relative;
-    font-size: 50%;
-    width: 13em;
-    right: 0em;
-    top: 0.8em;
-  }
-  
-  #stepCheckbox {
-    position: relative;
-    top: -3em;
-    right: 1.5em;
-  }
+}
+     
