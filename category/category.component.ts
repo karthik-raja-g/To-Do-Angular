@@ -18,7 +18,6 @@ export class CategoryComponent implements OnInit {
   currentTask:Task;
   tasksComponent = new TasksComponent(this.data);
   commonUtils = new Utils;
-  displayTasks: Task[];
   
   constructor(private data: DataService) { }
 
@@ -34,7 +33,6 @@ export class CategoryComponent implements OnInit {
     if(e.keyCode == 13 && e.target.value != "") {
       this.currentTask = this.categoryService.addTask(e.target.value)
       this.tasks.allTasks.push(this.currentTask);
-      this.displayTasks = this.tasks.allTasks;
       this.data.updateTask(this.currentTask);
       e.target.value ="";
     }

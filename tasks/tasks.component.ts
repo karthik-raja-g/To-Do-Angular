@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from 'src/app/Task';
-import {Utils} from 'src/app/utils/utils';
 import { DataService } from "../data.service";
 import { SubTask } from '../SubTask';
 import {StepsComponent} from "src/app/steps/steps.component";
@@ -18,8 +17,8 @@ export class TasksComponent implements OnInit {
   currentTask : Task;
   currentSubTask : SubTask; 
   subTask : SubTask;
-  displaySubTasks: SubTask[];
   stepsComponent = new StepsComponent(this.data);
+  stats: string ;
 
   ngOnInit() {
     this.data.currentTask.subscribe(activeTask => this.currentTask = activeTask);
@@ -33,6 +32,7 @@ export class TasksComponent implements OnInit {
    */
   public addSubTask(task:Task) {
     this.currentTask = task;
+    this.stats = `${this.getCompletedSubTasks()} of ${this.currentTask.subtasks.length} completed`;
   }
 
   /**
@@ -40,7 +40,6 @@ export class TasksComponent implements OnInit {
    * @param e - The element containig sub task name entered by user
    */
   public saveSubTask(e) {
-    this.displaySubTasks = this.currentTask.subtasks;
     if(e.keyCode == 13 && e.target.value != "") {
       this.subTask = {id: Date.now(), info: e.target.value, isAvailable: true, isDeleted: false, steps: [],notes: ""};
       e.target.value = "";
@@ -48,7 +47,7 @@ export class TasksComponent implements OnInit {
       this.data.updateTask(this.currentTask);
       this.data.updateSubTask(this.currentSubTask);
       this.data.setUpdate(this.currentTask);
-      
+      this.stats = `${this.getCompletedSubTasks()} of ${this.currentTask.subtasks.length} completed`;
     }
   }
 
@@ -62,6 +61,7 @@ export class TasksComponent implements OnInit {
       subTask.isAvailable = false;
     else
       subTask.isAvailable = true;
+    this.stats = `${this.getCompletedSubTasks()} of ${this.currentTask.subtasks.length} completed`;
   }
 
   /**
@@ -70,6 +70,15 @@ export class TasksComponent implements OnInit {
    */
   public showStepsMenu(subTask:SubTask) {
     this.stepsComponent.showStepsMenu(subTask);
+  }
+
+  /**
+   * It gets the count of sub tasks that has been completed
+   * @return - The total number of completed sub tasks 
+   */
+  public getCompletedSubTasks () {
+    let count = this.currentTask.subtasks.filter((subtask:SubTask) => subtask.isAvailable === false).length;
+    return count;
   }
 
 }

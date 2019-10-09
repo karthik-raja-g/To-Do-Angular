@@ -1,7 +1,7 @@
 <div *ngIf = "currentSubTask != null" class="stepDetails">
     <div class="taskSteps">
         <div class="stepHeader">
-            <p id="stepStats"></p>
+            <p id="stepStats">{{stats}}</p>
             <input id="stepHeading" [(ngModel)] = "currentSubTask.info"/>
             <input type="checkbox" id="taskCheckBox">
             <!--<input type="checkbox" [(ngModel)] = "currentSubTask.info" id="stepCheckbox" (click)="finishStep(currentSubTask.id)" [checked] = "!currentSubTask.isAvailable ? 'checked' : null"/>-->
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="steps" >
-            <div class="subStep" *ngFor = "let step of displaySteps" (click)= "changeStepStatus(step)">
+            <div class="subStep" *ngFor = "let step of currentSubTask.steps" (click)= "changeStepStatus(step)">
                 <div *ngIf="step.isAvailable && !step.isDeleted">
                     <!--<input class="stepDetail" [(ngModel)] = "step.name">-->
                     <p class="stepDetail">{{step.name}}</p>
@@ -32,6 +32,6 @@
         <textarea class="notes" value="" placeholder="Add a note"></textarea>
     </div>
     <i class="slider" (click)= "toggleSteps()"></i>
-    <i class="trash"></i>
+    <i class="trash" (click)= "deleteCurrentSubTask()"></i>
 </div>
 

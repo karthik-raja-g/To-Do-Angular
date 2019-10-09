@@ -15,7 +15,7 @@ export class StepsComponent implements OnInit {
   currentSubTask : SubTask; 
   step: Step;
   subTask : SubTask;
-  displaySteps: Step[];
+  stats: string;
 
   constructor(private data: DataService) { }
 
@@ -42,13 +42,13 @@ export class StepsComponent implements OnInit {
   public saveStep(e) {
     if(e.keyCode == 13 && e.target.value != "") {
       let stepName = e.target.value;
-      this.displaySteps = this.currentSubTask.steps;
       this.step = {id: Date.now(), name: stepName, isAvailable: true, isDeleted: false};
       e.target.value = "";
       this.currentSubTask.steps.push(this.step);
       this.data.updateTask(this.currentTask);
       this.data.updateSubTask(this.currentSubTask);
       this.data.setUpdate(this.currentTask);
+      this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
     }
   }
 
@@ -61,9 +61,11 @@ export class StepsComponent implements OnInit {
     let activeStep = this.currentSubTask.steps.find(({id}) => id == step.id);
     console.log(activeStep);
     if(activeStep.isAvailable) 
-     activeStep.isAvailable = false;
+      activeStep.isAvailable = false;
     else
-     activeStep.isAvailable = true;
+      activeStep.isAvailable = true;
+
+    this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
   }
 
   /**
@@ -80,5 +82,29 @@ export class StepsComponent implements OnInit {
    */
   public toggleSteps() {
     this.currentSubTask = null;
+  }
+
+  /**
+   * It gets the count of steps that has been completed
+   * @return - The total number of completed steps 
+   */
+  public getCompletedSteps() {
+    let count = this.currentSubTask.steps.filter((step:Step) => step.isAvailable === false).length;
+    return count;
+  }
+
+  /**
+   * It deletes the current sub task
+   */
+  public deleteCurrentSubTask() {
+    let index = this.currentTask.subtasks.indexOf(this.currentSubTask);
+    if (this.currentTask.subtasks.length == (index+1)) 
+      this.currentSubTask = null;
+    else if (index == 0 && this.currentTask.subtasks.length == index+1) 
+      this.currentSubTask = this.currentTask.subtasks[index+1];
+    else 
+      this.currentSubTask = this.currentTask.subtasks[index-1];
+    this.currentTask.subtasks.splice(index,1);
+    this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
   }
 }

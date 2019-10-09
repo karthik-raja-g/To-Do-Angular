@@ -21,7 +21,7 @@
             <i class="sideMenuIcons" id="list"></i>
             <a href="#"> My List</a>
         </div>
-        <div class="category" *ngFor = "let task of displayTasks">
+        <div class="category" *ngFor = "let task of tasks.allTasks">
             <div class = "categoryName" id= {{task.id}} (click) = addSubTask(task)>
                 <i class="sideMenuIcons" id="list" display="inline"></i>
                 <p>{{task.name}}</p>              
