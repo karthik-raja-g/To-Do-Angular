@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {SubTask} from "src/app/SubTask";
 import {Task} from "src/app/Task";
-//import {Tasks} from 'src/app/tasks';
-
-
-//export const HEROES: Hero[] = [
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +8,12 @@ import {Task} from "src/app/Task";
 export class CategoryService {
   constructor() { }
 
-  public addTask(task) {
+  /**
+   * It creates a task and returns it
+   * @param task - The task name entered by the user
+   * @return newTask - The task created
+   */
+  public getCreatedTask(task:string) {
      let newTask = new Task();
     newTask.id = Date.now();
     newTask.name = task;

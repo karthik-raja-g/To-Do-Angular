@@ -41,7 +41,7 @@ export class CategoryComponent implements OnInit {
    */
   public addCategory(e) {
     if(e.keyCode == 13 && e.target.value != "") {
-      this.currentTask = this.categoryService.addTask(e.target.value)
+      this.currentTask = this.categoryService.getCreatedTask(e.target.value)
       this.tasks.allTasks.push(this.currentTask);
       this.data.updateTask(this.currentTask);
       e.target.value ="";

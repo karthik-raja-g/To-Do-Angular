@@ -57,10 +57,7 @@ export class StepsComponent implements OnInit {
    * @param e - The element containing text entered by the user
    */
   public saveNotes(e) {
-    console.log(this.currentSubTask);
-    //if(e)
       this.currentSubTask.notes = e.target.value;
-    //e.target.value = "";
   }
 
   /**
@@ -73,7 +70,6 @@ export class StepsComponent implements OnInit {
       activeStep.isAvailable = false;
     else
       activeStep.isAvailable = true;
-
     this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
   }
 
@@ -103,7 +99,7 @@ export class StepsComponent implements OnInit {
   }
 
   /**
-   * It deletes the current sub task
+   * It deletes the current sub task and shows the previous or the next sub task
    */
   public deleteCurrentSubTask() {
     let index = this.currentTask.subtasks.indexOf(this.currentSubTask);
