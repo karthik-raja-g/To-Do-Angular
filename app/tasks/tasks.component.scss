@@ -1,19 +1,22 @@
 $font: 'Roboto', sans-serif;
 $borderStyle: solid;
+$tasksBgColor: #FFFFFF;
+$tasksBorderColor: #d9d9d9;
+$subTaskBorderColor: #d9d9d9;
+$subTaskAdditionBorderColor: #d9d9d9;
 
 .tasks {
-    background-color: #FFFFFF;
+    background-color: $tasksBgColor;
     position: relative;
     height: 50em;
     left: 3em;
     width: 100em;
     border-left-style: $borderStyle;
     border-right-style: $borderStyle;
-    border-color: black;
+    border-color: $tasksBorderColor;
     border-width: 1px;
     transition: 0.3s;
     display: flex;
-    /*overflow-x: hidden;*/
     top: 2.5em;
 
     h1 {
@@ -67,7 +70,7 @@ $borderStyle: solid;
         width: 5em;
         font-size: 35%;
         right: -15em;
-        background-color: #f2f2f2;
+        background-color: $tasksBgColor;
         align-content: center;
         display: block;
     }
@@ -110,7 +113,7 @@ $borderStyle: solid;
             border-width: 1px;
             font-family: $font;
             align-content: center;
-            border-color:  #d9d9d9;
+            border-color: $subTaskBorderColor;
             display:block;
 
             .selectIcon {
@@ -146,7 +149,6 @@ $borderStyle: solid;
         top: 16.5em;
         width: 38em;
         height: 3em;
-        cursor: pointer;
         font-family: $font;
         display: block;
 
@@ -169,7 +171,7 @@ $borderStyle: solid;
             display: block;
             left: 3em;
             border-bottom-style: $borderStyle;
-            border-color: #d9d9d9;
+            border-color: $subTaskAdditionBorderColor;
             border-width: 1px;
         }
     }

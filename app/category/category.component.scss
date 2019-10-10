@@ -1,8 +1,12 @@
 $font: 'Roboto', sans-serif;
+$menuBgColor: #F4F4F4;
+$sideMenuHoverColor: white;
+$categoryNameHoverColor: white;
+$sideMenuIconsHoverColor: #d9d9d9;
 
 .menu {
     position: absolute;
-    background-color: #F4F4F4;
+    background-color:$menuBgColor;
     height: 50em;
     width: 3em;
     transition: 0.3s;
@@ -37,8 +41,7 @@ $font: 'Roboto', sans-serif;
     a {
         display:block;
     }
-
-
+    
     p {
         display: block;
     }
@@ -95,7 +98,7 @@ $font: 'Roboto', sans-serif;
         }
 
         .sideMenu:hover {
-            background-color: white;
+            background-color: $sideMenuHoverColor;
         }
         .totalCategories {
             position: absolute;
@@ -162,8 +165,6 @@ $font: 'Roboto', sans-serif;
             width: 18em;
             right: 0.3em;
             visibility: visible;
-            /*overflow-y: auto;
-            overflow-x: hidden;*/
         }
         
         .categoryHidden {
@@ -185,7 +186,7 @@ $font: 'Roboto', sans-serif;
         }
         
         .categoryName:hover {
-            background-color: white;
+            background-color: $categoryNameHoverColor;
         }
         
         .categoryName p {
@@ -225,10 +226,6 @@ $font: 'Roboto', sans-serif;
                 border: none;
                 visibility: visible;
             }
-
-            newListHidden {
-                visibility: hidden;
-            }
         }
     }
 }
@@ -244,7 +241,7 @@ $font: 'Roboto', sans-serif;
 }
   
 .sideMenuIcons:hover {
-    background-color: #d9d9d9;
+    background-color: $sideMenuIconsHoverColor;
 }
   
 
