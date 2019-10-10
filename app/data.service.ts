@@ -3,16 +3,22 @@ import { BehaviorSubject } from 'rxjs';
 import {Task} from 'src/app/Task';
 import {SubTask} from 'src/app/SubTask';
 import {Step} from 'src/app/Step';
-import { AllTasks } from 'src/app/tasks';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
 
-  /*tasks: AllTasks["allTasks"];
-  private activeTasks = new BehaviorSubject(this.tasks);
-  currentTasks = this.activeTasks.asObservable();*/
+/**
+ * <p>
+ * The Dataservice class acts as the data provider for the entire
+ * application. It gets the current task or sub task as selected by the
+ * user and makes it as an Observable object. Thus all other objects
+ * accessing the current task or sub task become the subscribers
+ * </p>
+ * 
+ * @author karthik created on 4 October 2019
+ */
+export class DataService {
 
   task: Task;
   private activeTask = new BehaviorSubject(this.task);
@@ -22,10 +28,6 @@ export class DataService {
   private activeSubTask = new BehaviorSubject(this.subTask);
   currentSubTask = this.activeSubTask.asObservable();
 
-  step: Step;
-  private activeStep = new BehaviorSubject(this.step);
-  currentStep = this.activeStep.asObservable();
-
   constructor() { }
 
   updateTask(newTask: Task) {
@@ -34,10 +36,6 @@ export class DataService {
 
   updateSubTask(newSubTask: SubTask) {
     this.activeSubTask.next(newSubTask);
-  }
-
-  updateStep(newStep: Step) {
-    this.activeStep.next(newStep);
   }
 
   setUpdate(data){ 
