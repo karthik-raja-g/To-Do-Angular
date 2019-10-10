@@ -9,12 +9,21 @@ import {Task} from 'src/app/Task';
   templateUrl: './steps.component.html',
   styleUrls: ['./steps.component.scss']
 })
+
+/**
+ * <p>
+ * The StepsComponent is the main controller for adding steps to a sub task
+ * Steps are added to the active sub task. Steps can be marked as completed
+ * by striking or entirely be deleted. 
+ * </p>
+ * 
+ * @author karthik created on 7 October 2019
+ */
 export class StepsComponent implements OnInit {
 
   currentTask : Task;
   currentSubTask : SubTask; 
   step: Step;
-  subTask : SubTask;
   stats: string;
 
   constructor(private data: DataService) { }
@@ -32,7 +41,6 @@ export class StepsComponent implements OnInit {
   public showStepsMenu(subTask:SubTask) {
     this.currentSubTask = subTask;
     this.data.updateSubTask(this.currentSubTask);
-    this.subTask = subTask;
   }
 
   /**
@@ -80,6 +88,7 @@ export class StepsComponent implements OnInit {
   public deleteStep(step:Step) {
     let index = this.currentSubTask.steps.indexOf(step);
     this.currentSubTask.steps.splice(index,1);
+    this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
   }
 
   /**
