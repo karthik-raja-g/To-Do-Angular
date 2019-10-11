@@ -5,12 +5,14 @@ import {CategoryService} from "src/app/category-service.service";
 import {TasksComponent} from "src/app/tasks/tasks.component";
 import {Utils} from 'src/app/utils/utils';
 import { DataService } from "../data.service";
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
+
 /**
  * <p>
  * The CategoryComponent acts as controller for left side panel, where
@@ -25,6 +27,7 @@ export class CategoryComponent implements OnInit {
   tasks: AllTasks = {allTasks: []};
   currentTask:Task;
   stats:number;
+  categoryStats:number;
   categoryService = new CategoryService;
   tasksComponent = new TasksComponent(this.data);
   commonUtils = new Utils;
@@ -46,6 +49,7 @@ export class CategoryComponent implements OnInit {
       this.data.updateTask(this.currentTask);
       e.target.value ="";
       this.stats = this.tasks.allTasks.filter((task:Task) => task.isDeleted === false).length;
+      this.categoryStats = this.currentTask.subtasks.length;
     }
 
   }
@@ -77,5 +81,6 @@ export class CategoryComponent implements OnInit {
     this.data.updateTask(task);
     this.tasksComponent.addSubTask(task);
     this.stats = this.tasks.allTasks.filter((task:Task) => task.isDeleted === false).length;
+    this.categoryStats = this.currentTask.subtasks.length;
   }
 }

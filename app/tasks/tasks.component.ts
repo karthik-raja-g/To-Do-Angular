@@ -3,6 +3,7 @@ import {Task} from 'src/app/Task';
 import { DataService } from "../data.service";
 import { SubTask } from '../SubTask';
 import {StepsComponent} from "src/app/steps/steps.component";
+import { NgModule } from '@angular/core';
 
 
 @Component({

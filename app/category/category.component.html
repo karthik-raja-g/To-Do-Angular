@@ -24,7 +24,8 @@
         <div class="category" *ngFor = "let task of tasks.allTasks">
             <div class = "categoryName" id= {{task.id}} (click) = addSubTask(task) *ngIf = "!task.isDeleted">
                 <i class="sideMenuIcons" id="list" display="inline"></i>
-                <p>{{task.name}}</p>              
+                <p>{{task.name}}</p>
+                <p class="categoryStats">{{categoryStats}}</p>              
             </div>
         </div>
         <div class="addCate" id="addCategory">

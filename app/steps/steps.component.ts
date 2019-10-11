@@ -3,6 +3,7 @@ import { SubTask } from '../SubTask';
 import { Step } from '../Step';
 import { DataService } from '../data.service';
 import {Task} from 'src/app/Task';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-steps',
@@ -86,9 +87,11 @@ export class StepsComponent implements OnInit {
    * @param step - The step to be deleted 
    */
   public deleteStep(step:Step) {
-    let index = this.currentSubTask.steps.indexOf(step);
-    this.currentSubTask.steps.splice(index,1);
-    this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
+    if(confirm("Do you really want to delete the step?")) {
+      let index = this.currentSubTask.steps.indexOf(step);
+      this.currentSubTask.steps.splice(index,1);
+      this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
+    }
   }
 
   /**
@@ -111,14 +114,16 @@ export class StepsComponent implements OnInit {
    * It deletes the current sub task and shows the previous or the next sub task
    */
   public deleteCurrentSubTask() {
-    let index = this.currentTask.subtasks.indexOf(this.currentSubTask);
-    if (this.currentTask.subtasks.length == (index+1)) 
-      this.currentSubTask = null;
-    else if (index == 0 && this.currentTask.subtasks.length == index+1) 
-      this.currentSubTask = this.currentTask.subtasks[index+1];
-    else 
-      this.currentSubTask = this.currentTask.subtasks[index-1];
-    this.currentTask.subtasks.splice(index,1);
-    this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
+    if(confirm("Do you really want to delete the sub task?")) {
+      let index = this.currentTask.subtasks.indexOf(this.currentSubTask);
+      if (this.currentTask.subtasks.length == (index+1)) 
+        this.currentSubTask = null;
+      else if (index == 0 && this.currentTask.subtasks.length == index+1) 
+        this.currentSubTask = this.currentTask.subtasks[index+1];
+      else 
+        this.currentSubTask = this.currentTask.subtasks[index-1];
+      this.currentTask.subtasks.splice(index,1);
+      this.stats = `${this.getCompletedSteps()} of ${this.currentSubTask.steps.length} completed`;
+    }
   }
 }
